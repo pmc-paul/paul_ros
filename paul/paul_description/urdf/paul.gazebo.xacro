@@ -12,6 +12,7 @@
   <!-- wheel controller -->
   <gazebo>
     <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
+      <robotNamespace>/paul_base_controller</robotNamespace>
       <rosDebugLevel>na</rosDebugLevel>
       <publishWheelTF>false</publishWheelTF>
       <publishTf>1</publishTf>

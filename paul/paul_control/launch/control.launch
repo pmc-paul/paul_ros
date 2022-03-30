@@ -1,3 +1,4 @@
+<?xml version="1.0"?>
 <launch>
   <arg name="enable_joint0" default="true"/>
   <arg name="enable_joint1" default="true"/>
@@ -15,7 +16,7 @@
     enable_joint0:=$(arg enable_joint0) enable_joint1:=$(arg enable_joint1)"/>
 
   <!-- load controllers -->
-  <rosparam file="$(find paul_control)/config/controller.yaml" command="load"/>
+  <rosparam file="$(find paul_control)/config/propulsion.yaml" command="load"/>
 
   <!-- start joint state controller -->
   <node name="paul_controller_spawner" pkg="controller_manager" type="spawner"

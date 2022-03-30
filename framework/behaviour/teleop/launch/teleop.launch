@@ -6,18 +6,21 @@
 
   <arg name="keyboard" default="false"/>
 
-  <!-- joy node -->
-  <rosparam command="load" file="$(find teleop)/config/controller.yaml" />
-  <param name="joy_node/dev" value="$(arg joy_dev)" />
+  <group ns="paul_base_controller">
+    <!-- joy node -->
+    <rosparam command="load" file="$(find teleop)/config/controller.yaml" />
+    <param name="joy_node/dev" value="$(arg joy_dev)" />
 
-  <node pkg="joy" type="joy_node" name="joy_node" />
+    <node pkg="joy" type="joy_node" name="joy_node" />
 
-  <!-- teleop node -->
-  <group if="$(arg keyboard)">
-    <node name="teleop_twist_keyboard" type="teleop_twist_keyboard.py" pkg="teleop_twist_keyboard" output="screen"/>
+    <!-- teleop node -->
+    <group if="$(arg keyboard)">
+      <node name="teleop_twist_keyboard" type="teleop_twist_keyboard.py" pkg="teleop_twist_keyboard" output="screen"/>
+    </group>
+
+    <group unless="$(arg keyboard)">
+      <node pkg="teleop_twist_joy" type="teleop_node" name="teleop_twist_joy"/>
+    </group>
   </group>
-
-  <group unless="$(arg keyboard)">
-    <node pkg="teleop_twist_joy" type="teleop_node" name="teleop_twist_joy"/>
-  </group>
+  
 </launch>
