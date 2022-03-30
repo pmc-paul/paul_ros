@@ -85,7 +85,7 @@
   <xacro:include filename="$(find paul_description)/urdf/sensors/lidar.urdf.xacro" />
   <xacro:include filename="$(find paul_description)/urdf/sensors/d435/_d435.urdf.xacro"/>
   <xacro:include filename="$(find paul_description)/urdf/sensors/sonar/sonar.urdf.xacro"/>
-  
+  <xacro:include filename="$(find paul_description)/urdf/sensors/realsense_d415.urdf.xacro"/>
   <!-- ============================================== -->
   <!-- ==================== BASE ==================== -->
   <!-- ============================================== -->
@@ -183,21 +183,29 @@
     <origin xyz="0.50614 0 0.1" rpy="0 0 0" />
   </xacro:lidar>
 
-  <!-- D435 RGB-D Sensor -->
-  <xacro:sensor_d435 parent="base_link" use_nominal_extrinsics="${use_nominal_extrinsics}" name="realsense" topics_ns="realsense">
-    <origin xyz="${realsense_pose_x} ${realsense_pose_y} ${realsense_pose_z}" rpy="${realsense_rot_x} ${realsense_rot_y} ${realsense_rot_z}"/>
-  </xacro:sensor_d435>
+  <!-- D435 RGB-D Sensor, D415 in simulation for better performance with rtabmap in simulation -->
+  <xacro:if value="$(arg sim)">
+    <xacro:realsense_d415_sensor parent="base_link" name="realsense" >
+      <origin xyz="${realsense_pose_x} ${realsense_pose_y} ${realsense_pose_z}" rpy="${realsense_rot_x} ${realsense_rot_y} ${realsense_rot_z}"/>
+    </xacro:realsense_d415_sensor>
+  </xacro:if>
+  <xacro:unless value="$(arg sim)">
+    <xacro:sensor_d435 parent="base_link" use_nominal_extrinsics="${use_nominal_extrinsics}" name="realsense" topics_ns="realsense">
+      <origin xyz="${realsense_pose_x} ${realsense_pose_y} ${realsense_pose_z}" rpy="${realsense_rot_x} ${realsense_rot_y} ${realsense_rot_z}"/>
+    </xacro:sensor_d435>
+  </xacro:unless>
+  
 
-  <!-- Sonars -->
-  <xacro:sonar name="left" parent="base_link">
+  <!-- Sonars: currently commented for better performance with rtabmap in simulation -->
+  <xacro:sonar name="left" parent="base_link" enabled="false">
     <origin xyz="${base_width} 0.1 ${base_height - 0.2}" rpy="0 0 0"/>
   </xacro:sonar>
 
-  <xacro:sonar name="center" parent="base_link">
+  <xacro:sonar name="center" parent="base_link" enabled="false">
     <origin xyz="${base_width} 0 ${base_height - 0.2}" rpy="0 0 0"/>
   </xacro:sonar>
 
-  <xacro:sonar name="right" parent="base_link">
+  <xacro:sonar name="right" parent="base_link" enabled="false">
     <origin xyz="${base_width} -0.1 ${base_height - 0.2}" rpy="0 0 0"/>
   </xacro:sonar>
 

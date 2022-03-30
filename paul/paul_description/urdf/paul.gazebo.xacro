@@ -16,8 +16,7 @@
       <publishWheelTF>false</publishWheelTF>
       <publishTf>1</publishTf>
       <publishOdomTF>true</publishOdomTF>
-      <odometrySource>1</odometrySource>
-      <publish_odom>1</publish_odom>
+      <odometrySource>world</odometrySource>   <!-- options: encoder, world-->
       <publishWheelJointState>false</publishWheelJointState>
       <alwaysOn>true</alwaysOn>
       <updateRate>100.0</updateRate>

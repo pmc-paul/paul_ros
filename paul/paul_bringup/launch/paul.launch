@@ -87,11 +87,11 @@
     <!-- TODO: add move_base and rtabmap in navigation package -->
     <include file="$(find teleop)/launch/teleop.launch"/>
 
+    <!-- Launching move_base to move robot around -->
+    <include file="$(find paul_navigation)/launch/move_base.launch"/>
+
     <!-- RTABMap -->
     <group if="$(arg start_rtabmap)">
-        <!-- Launching move_base to move robot around -->
-        <include file="$(find paul_navigation)/launch/move_base.launch"/>
-        <!-- Launching rtabmap -->
         <include file="$(find slam)/launch/rtabmap.launch">
             <arg name="rtabmapviz" value="$(arg rtabmapviz)"/>
             <arg name="localization" value="$(arg localization)"/>

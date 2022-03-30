@@ -7,11 +7,11 @@
             <sensor type="ray" name="${sonar_name}_sonar">
                 <pose>0 0 0 0 0 0</pose>
                 <visualize>false</visualize>
-                <update_rate>10</update_rate>
+                <update_rate>5</update_rate>
                 <ray>
                     <scan>
                         <horizontal>
-                            <samples>720</samples>
+                            <samples>2</samples>
                             <resolution>1</resolution>
                             <min_angle>-0.261799</min_angle> <!-- - 7.5 deg -->
                             <max_angle>0.261799</max_angle>
@@ -36,7 +36,7 @@
                     <topicName>/${topics_ns}/${sonar_name}</topicName>
                     <frameName>${reference_link}</frameName>
                     <radiation>ultrasound</radiation>
-                    <updateRate>10</updateRate>
+                    <updateRate>5</updateRate>
                     <fov>0.05</fov>
                     <gaussianNoise>0.0</gaussianNoise>
                 </plugin>

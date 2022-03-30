@@ -43,7 +43,7 @@
       <param name="frame_id" type="string"    value="base_footprint"/>
 
       <!-- RTAB-Map's parameters -->
-
+      
     </node>
 
     <!-- RTABMAP Visualization -->
@@ -56,8 +56,8 @@
 
       <param name="queue_size"        type="int"    value="50"/>
       <param name="frame_id"          type="string" value="base_link"/>
-      <remap from="odom"              to="/paul/odom"/>
-      <remap from="scan"              to="/paul/laser_scan"/>
+      <remap from="odom"              to="/odom"/>
+      <remap from="scan"              to="/laser_scan"/>
 
     </node>
   </group>

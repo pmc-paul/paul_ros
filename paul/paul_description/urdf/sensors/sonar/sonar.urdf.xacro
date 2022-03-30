@@ -3,7 +3,7 @@
   <!-- Includes -->
   <xacro:include filename="$(find paul_description)/urdf/sensors/sonar/sonar.gazebo.xacro"/>
 
-  <xacro:macro name="sonar" params="parent *origin name:=sonar topics_ns:=sonars">
+  <xacro:macro name="sonar" params="parent *origin name:=sonar topics_ns:=sonars enabled">
     <xacro:property name="M_PI" value="3.1415926535897931" />
 
     <xacro:property name="sonar_width" value="0.04"/>
@@ -28,6 +28,9 @@
     </joint>
 
     <!-- Sonar Gazebo Plugin -->
-    <xacro:gazebo_sonar sonar_name="${name}" reference_link="${name}_sonar_link" topics_ns="${topics_ns}"/>
+    <xacro:if value="${enabled}">
+        <xacro:gazebo_sonar sonar_name="${name}" reference_link="${name}_sonar_link" topics_ns="${topics_ns}"/>
+    </xacro:if>
+    
   </xacro:macro>
 </robot>

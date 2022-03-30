@@ -48,7 +48,7 @@
                 </ray>
                 <plugin name="laser_node" filename="libgazebo_ros_laser.so">
                     <topicName>/laser_scan</topicName>
-                    <frameName>/laser_link</frameName> <!-- slash required for global namespace -->
+                    <frameName>laser_link</frameName> <!-- slash required for global namespace -->
                 </plugin>
             </sensor>
         </gazebo>
