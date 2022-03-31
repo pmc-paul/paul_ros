@@ -13,7 +13,7 @@
     <rosparam file="$(find paul_navigation)/config/move_base_params.yaml"          command="load" />
     <rosparam file="$(find paul_navigation)/config/dwa_local_planner_params.yaml"  command="load" />
     
-    <remap from="cmd_vel" to="/cmd_vel"/>
+    <remap from="cmd_vel" to="paul_base_controller/cmd_vel"/>
     <remap from="odom" to="/odom"/>
     <remap from="map" to="/map" />
     

@@ -29,8 +29,8 @@
       <wheelTorque>100</wheelTorque>
       <wheelAcceleration>1.8</wheelAcceleration>
       <commandTopic>cmd_vel</commandTopic>
-      <odometryFrame>odom</odometryFrame> 
-      <odometryTopic>odom</odometryTopic> 
+      <odometryFrame>/odom</odometryFrame> 
+      <odometryTopic>/odom</odometryTopic> 
       <robotBaseFrame>/base_footprint</robotBaseFrame>
     </plugin>
   </gazebo> 
